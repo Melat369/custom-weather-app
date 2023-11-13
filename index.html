@@ -13,6 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syne+Mono&display=swap"
       rel="stylesheet"
     />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
     <title>Vanilla Weather App</title>
   </head>
@@ -31,21 +32,21 @@
       <main>
         <div class="weather-forcast-body">
           <div class="col-6">
-            <h1 class="city-name" id="city">The City</h1>
+            <h1 class="city-name" id="city"></h1>
             <p>
-              <span id="days">Monday 01:15</span>
-              <span id="description">Sunny Day</span><br />
+              <span id="days"></span>, 
+              <span id="description"></span><br />
               <span id="humidity"
-                >Humidity: <strong id="humidity-percentage">12%</strong> </span
+                >Humidity: <strong id="humidity-percentage"></strong>,  </span
               ><span id="wind"
-                >Wind: <strong id="speed">1.55km/hr</strong></span
+                >Wind: <strong id="speed"></strong></span
               >
             </p>
           </div>
           <div class="weather-app-temp col-6">
-            <div id="icon"><img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt=""></div>
-            <div id="temperature">45</div>
-            <div id="unit">°C</div>
+            <div id="icon"></div>
+            <div id="temperature"></div>
+            <div id="unit"></div>
           </div>
           <div></div>
         </div>
@@ -66,7 +67,19 @@
             </div>
         </div>
       </main>
-      <footer></footer>
+      <footer>
+        This project was coded by
+        <a href="https://github.com/Melat369" target="_blank"> Melat Tesfaye</a>,
+        is
+        <a href="https://github.com/Melat369/custom-weather-app.git" target="_blank"
+          >open-sourced on GitHub</a
+        >
+        and
+        <a href="https://vanjsweatherapp.netlify.app/" target="_blank"
+          >hosted on Netlify</a
+        >
+
+      </footer>
     </div>
     <script src="src/app.js"></script>
   </body>
