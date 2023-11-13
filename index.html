@@ -1,0 +1,73 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syne+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Vanilla Weather App</title>
+  </head>
+  <body>
+    <div class="weather-container">
+      <header class="header">
+        <form action="" class="search-form" id="search-form">
+          <input
+            type="search"
+            placeholder="Search for a City"
+            id="input-city"
+          />
+          <input type="submit" value="Search" id="search-btn" />
+        </form>
+      </header>
+      <main>
+        <div class="weather-forcast-body">
+          <div class="col-6">
+            <h1 class="city-name" id="city">The City</h1>
+            <p>
+              <span id="days">Monday 01:15</span>
+              <span id="description">Sunny Day</span><br />
+              <span id="humidity"
+                >Humidity: <strong id="humidity-percentage">12%</strong> </span
+              ><span id="wind"
+                >Wind: <strong id="speed">1.55km/hr</strong></span
+              >
+            </p>
+          </div>
+          <div class="weather-app-temp col-6">
+            <div id="icon"><img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt=""></div>
+            <div id="temperature">45</div>
+            <div id="unit">°C</div>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2 forcast">
+                <div class="day">
+                    MON
+                </div>
+                <div class="forcast-img">
+                    <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="">
+                </div>
+                <div>
+                    <span class="weather-temp-max">22°</span>
+                    <span class="weather-temp-min">12°</span>
+                </div>
+
+            </div>
+        </div>
+      </main>
+      <footer></footer>
+    </div>
+    <script src="src/app.js"></script>
+  </body>
+</html>
