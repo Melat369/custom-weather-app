@@ -24,7 +24,7 @@ function dateGetter(date) {
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Friday", "Saturday"];
   let day = days[date.getDay()];
 
-  if (min<10){
+  if (min < 10) {
     min = `0${min}`;
   }
   return `${day} ${hr}:${min}`;
@@ -34,6 +34,29 @@ function fetchCityApi(city) {
   let apiKey = "da0374bt080af181f43co47957d8c63f";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(apiUrl).then(refreshWeather);
+}
+
+function displayForecast() {
+
+   let arr = ["MON","TUE", "WED","THU","FRI", "SAT"];
+  let forecast = document.querySelector("#weather-forecast");
+  let forecastHTML = "";
+  arr.forEach(function(day){
+    forecastHTML = forecastHTML+ `<div class="col-lg-2 forcast">
+    <div class="day">
+        MON
+    </div>
+    <div class="forcast-img">
+        <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="">
+    </div>
+    <div>
+        <span class="weather-temp-max">22°</span>
+        <span class="weather-temp-min">12°</span>
+    </div>
+    
+    </div>`;
+  })
+
 }
 
 function adjustCity(event) {
@@ -46,3 +69,4 @@ let searchCity = document.querySelector("#input-city");
 searchCity.addEventListener("submit", adjustCity);
 
 fetchCityApi("Addis Ababa");
+displayForecast();
