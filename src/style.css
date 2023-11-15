@@ -70,10 +70,19 @@ main{
     font-weight: 500;
   }
 .forcast{
-    padding-top: 20px;
-    text-align: center;
+  padding: 30px 0;
+  text-align: center;
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 10px;    
+  }
+.forcast-img{
+  width:88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto;
 }
-
 .weather-temp-min{
   color: #9BA4B5;
 }

@@ -17,7 +17,7 @@ function refreshWeather(response) {
   temperatureElement.innerHTML = Math.round(temperature);
   currentIcon.innerHTML = `<img src = "${response.data.condition.icon_url}" class = "weather-app-icon" />`;
 
-  displayForecast(response.data.city);
+  getForecast(response.data.city);
 }
 
 function dateGetter(date) {
@@ -34,32 +34,37 @@ function dateGetter(date) {
 
 function fetchCityApi(city) {
   let apiKey = "da0374bt080af181f43co47957d8c63f";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(refreshWeather);
+}
+function formatDay(timestamp){
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
 }
 
 function displayForecast(response) {
-  console.log(response);
   let forcastSelector = document.querySelector("#weather-forecast");
   let forecastHtml = ""; 
 
-  let arrayDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
-  arrayDays.forEach(function (day) {
-    
+response.data.daily.forEach(function (day, index) {
+    if (index < 6){
     forecastHtml += `
    <div class="col-lg-2 forcast">
      <div class="day">
-         ${day}
+     ${formatDay(day.time)}
      </div>
-     <div class="forcast-img">
-         <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="">
+     <div >
+         <img src="${day.condition.icon_url}" alt="" class="forcast-img">
      </div>
      <div>
-         <span class="weather-temp-max">22°</span>
-         <span class="weather-temp-min">12°</span>
+         <span class="weather-temp-max">${Math.round(day.temperature.maximum)}°</span>
+         <span class="weather-temp-min">${Math.round(day.temperature.minimum)}°</span>
      </div>
    </div>`;
+    }
   });
 
   forcastSelector.innerHTML = forecastHtml;
@@ -67,7 +72,7 @@ function displayForecast(response) {
 
 function getForecast(city){
   apiKey = "da0374bt080af181f43co47957d8c63f";
-  apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+  apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 
 
@@ -75,13 +80,13 @@ function getForecast(city){
 
 function adjustCity(event) {
   event.preventDefault();
-  let searchedCity = document.querySelector("#input-city");
-  fetchCityApi(searchedCity.value);
+  let searchInput = document.querySelector("#input-city");
+
+  fetchCityApi(searchInput.value);
 }
 
-let searchCity = document.querySelector("#input-city");
+let searchCity = document.querySelector("#search-form");
 searchCity.addEventListener("submit", adjustCity);
 
 fetchCityApi("Addis Ababa");
-displayForecast(response);
 
