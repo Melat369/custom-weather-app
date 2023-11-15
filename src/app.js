@@ -16,6 +16,8 @@ function refreshWeather(response) {
   wind.innerHTML = `${response.data.wind.speed}km/hr`;
   temperatureElement.innerHTML = Math.round(temperature);
   currentIcon.innerHTML = `<img src = "${response.data.condition.icon_url}" class = "weather-app-icon" />`;
+
+  displayForecast(response.data.city);
 }
 
 function dateGetter(date) {
@@ -36,7 +38,8 @@ function fetchCityApi(city) {
   axios.get(apiUrl).then(refreshWeather);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response);
   let forcastSelector = document.querySelector("#weather-forecast");
   let forecastHtml = ""; 
 
@@ -62,6 +65,14 @@ function displayForecast() {
   forcastSelector.innerHTML = forecastHtml;
 }
 
+function getForecast(city){
+  apiKey = "da0374bt080af181f43co47957d8c63f";
+  apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+
+
+}
+
 function adjustCity(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#input-city");
@@ -72,5 +83,5 @@ let searchCity = document.querySelector("#input-city");
 searchCity.addEventListener("submit", adjustCity);
 
 fetchCityApi("Addis Ababa");
-displayForecast();
+displayForecast(response);
 
