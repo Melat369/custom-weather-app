@@ -37,26 +37,29 @@ function fetchCityApi(city) {
 }
 
 function displayForecast() {
+  let forcastSelector = document.querySelector("#weather-forecast");
+  let forecastHtml = ""; 
 
-   let arr = ["MON","TUE", "WED","THU","FRI", "SAT"];
-  let forecast = document.querySelector("#weather-forecast");
-  let forecastHTML = "";
-  arr.forEach(function(day){
-    forecastHTML = forecastHTML+ `<div class="col-lg-2 forcast">
-    <div class="day">
-        MON
-    </div>
-    <div class="forcast-img">
-        <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="">
-    </div>
-    <div>
-        <span class="weather-temp-max">22°</span>
-        <span class="weather-temp-min">12°</span>
-    </div>
+  let arrayDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+  arrayDays.forEach(function (day) {
     
-    </div>`;
-  })
+    forecastHtml += `
+   <div class="col-lg-2 forcast">
+     <div class="day">
+         ${day}
+     </div>
+     <div class="forcast-img">
+         <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="">
+     </div>
+     <div>
+         <span class="weather-temp-max">22°</span>
+         <span class="weather-temp-min">12°</span>
+     </div>
+   </div>`;
+  });
 
+  forcastSelector.innerHTML = forecastHtml;
 }
 
 function adjustCity(event) {
@@ -70,3 +73,4 @@ searchCity.addEventListener("submit", adjustCity);
 
 fetchCityApi("Addis Ababa");
 displayForecast();
+
